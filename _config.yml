@@ -1,17 +1,24 @@
-title: ""
-description: ""
-baseurl: ""
+title: "My Project"
+description: "A simple site built using Jekyll + Minimal Mistakes"
+baseurl: ""  # Leave empty for xi717.github.io
 url: "https://xi717.github.io"
 
 remote_theme: "mmistakes/minimal-mistakes"
 
+# Disable unnecessary blog features
 show_excerpts: false
 paginate: false
 paginate_path: /page:num/
 
+# Clean up unnecessary file exclusions/inclusions
+include: []  # No special includes
+exclude: ["README.md"]  # Optionally keep this if you don’t want README included
+
+# Plugins for caching
 plugins:
   - jekyll-include-cache
 
+# Default settings for the site
 defaults:
   - scope:
       path: ""
