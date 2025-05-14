@@ -9,9 +9,6 @@ show_excerpts: false
 paginate: false
 paginate_path: /page:num/
 
-include: [".htaccess"]
-exclude: ["README.md"]
-
 plugins:
   - jekyll-include-cache
 
