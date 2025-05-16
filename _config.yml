@@ -5,9 +5,6 @@ url: "https://xi717.github.io"
 
 remote_theme: "mmistakes/minimal-mistakes"
 
-show_excerpts: false
-paginate: false
-
 plugins:
   - jekyll-include-cache
 
