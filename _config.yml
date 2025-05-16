@@ -2,6 +2,8 @@ title: ""
 description: ""
 baseurl: "" 
 url: "https://xi717.github.io"
+
+minimal_mistakes_skin: "dirt"
  
 remote_theme: "mmistakes/minimal-mistakes"
 
