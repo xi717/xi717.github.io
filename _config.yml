@@ -1,6 +1,6 @@
 title: ""
 description: ""
-baseurl: "" 
+baseurl: "/project" 
 url: "https://xi717.github.io"
 
 remote_theme: "mmistakes/minimal-mistakes"
