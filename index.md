@@ -5,8 +5,22 @@ permalink: /
 toc: true
 toc_sticky: true
 ---
-this is the blog page for the ai+x project()
-# first step
+Members:
+
+
+
+# I.Proposal
 etc.
-# second step
+## Motivation
+ect.
+## Our expectations
+# II.Datasets
 etc.
+# III.Methodology
+ect.
+# IV.Evaluation & Analysis
+ect.
+# V.Related Work 
+ect.
+# VI.Conclusion: Discussion
+ect.
