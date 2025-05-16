@@ -1,4 +1,4 @@
-t---
+---
 layout: single
 title: "Welcome editing"
 permalink: /
