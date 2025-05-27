@@ -3,7 +3,7 @@ description: ""
 baseurl: "" 
 url: "https://xi717.github.io"
 
-minimal_mistakes_skin: "air"
+minimal_mistakes_skin: "mint"
  
 remote_theme: "mmistakes/minimal-mistakes"
 
