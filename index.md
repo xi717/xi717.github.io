@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Welcome editing"
+title: ""
 permalink: /
 toc: true
 toc_sticky: true
