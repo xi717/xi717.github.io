@@ -24,7 +24,9 @@ ect.
 ect.
 # II.Datasets
 
-this is the link of the dataset used in our project:[https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors](https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors)
+this is the link of the dataset used in our project:
+
+[https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors](https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors)
 
 first, let's read the csv file and check our dataset using pandas:
 
@@ -33,6 +35,7 @@ first, let's read the csv file and check our dataset using pandas:
    df = pd.read_csv("anxiety_depression_data.csv")
    print(df.info())
    ```
+
 we should get a terminal output like below:
 
    ```python
@@ -65,6 +68,9 @@ we should get a terminal output like below:
    dtypes: float64(2), int64(14), object(5)
    memory usage: 197.0+ KB
    ```
+
+and here's the summarized information of every column: 
+
 # III.Methodology
 ect.
 # IV.Evaluation & Analysis
