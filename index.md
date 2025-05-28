@@ -47,7 +47,7 @@ we should get a terminal output like below:
     3   Employment_Status              1200 non-null   object
     4   Sleep_Hours                    1200 non-null   float64
     5   Physical_Activity_Hrs          1200 non-null   float64
-   6   Social_Support_Score           1200 non-null   int64
+    6   Social_Support_Score           1200 non-null   int64
     7   Anxiety_Score                  1200 non-null   int64
     8   Depression_Score               1200 non-null   int64
     9   Stress_Level                   1200 non-null   int64
