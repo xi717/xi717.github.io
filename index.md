@@ -30,7 +30,7 @@ first, let's read the csv file and check our dataset using pandas:
 
    ```python
    import pandas as pd
-   df = pd.read_csv("C:\\Users\\zengz\\Desktop\\4\\anxiety_depression_data.csv")
+   df = pd.read_csv("anxiety_depression_data.csv")
    print(df.info())
    ```
 we should get a terminal output like below:
