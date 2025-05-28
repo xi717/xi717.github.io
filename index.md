@@ -78,7 +78,7 @@ and here's the summarized information of every column:
 | Education_Level | 교육 수준 | 범주 | 고등학교, 학사, 석사, 박사, 기타 |
 | Employment_Status | 고용 상태 | 범주 | 취업자, 실업자, 학생, 은퇴자 |
 | Sleep_Hours | 일일 수면 시간(시간) | 수치 | 2.0-12.4시간 |
-| Physical_Activity_Hrs | 주간 운동 시간(시간) | 수치 | 0.0-13.4시간 |
+| Physical_Activity_Hrs | 주간 운동 시간(시간) | 수치 | 0.0-15.1시간 |
 | Social_Support_Score | 사회적 지지 점수 | 수치 | 1-9(점수가 높을수록 지지가 강해진다) |
 | Anxiety_Score | 불안 증상 점수 | 수치 | 1-20(점수가 높을수록 증상이 심해진다) |
 | Depression_Score | 우울 증상 점수 | 수치 | 1-20(점수가 높을수록 증상이 심해진다) |
