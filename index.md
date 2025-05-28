@@ -80,8 +80,8 @@ and here's the summarized information of every column:
 | Sleep_Hours | 일일 수면 시간(시간) | 수치 | 2.0-12.4시간 |
 | Physical_Activity_Hrs | 주간 운동 시간(시간) | 수치 | 0.0-13.4시간 |
 | Social_Support_Score | 사회적 지지 점수 | 수치 | 1-9(점수가 높을수록 지지가 강해진다) |
-| Anxiety_Score | 불안 증상 점수 | 수치 | 1-20(점수가 높을수록 증상이 더 심해진다) |
-| Depression_Score | 우울 증상 점수 | 수치 | 1-20(점수가 높을수록 증상이 더 심해진다) |
+| Anxiety_Score | 불안 증상 점수 | 수치 | 1-20(점수가 높을수록 증상이 심해진다) |
+| Depression_Score | 우울 증상 점수 | 수치 | 1-20(점수가 높을수록 증상이 심해진다) |
 | Stress_Level | 스트레스 수준 | 수치 | 1-9(점수가 높을수록 스트레스가 커진다) |
 | Family_History_Mental_Illness | 정신 질환 가족력 | 이분 | 0(없음), 1(있음) |
 | Chronic_Illnesses | 만성 질환 | 이분 | 0(없음), 1(있음) |
