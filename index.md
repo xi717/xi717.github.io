@@ -94,7 +94,6 @@ and here's the summarized information of every column:
 | Self_Esteem_Score | 자아 존중감 점수 | 수치 | 1-9(점수가 높을수록 자존감이 강해진다) |
 | Life_Satisfaction_Score | 삶의 만족도 | 수치 | 1-9(점수가 높을수록 만족도이 높아진다) |
 | Loneliness_Score | 외로움 점수 | 수치 | 1-9(점수가 높을수록 외로움이 심해진다) |
-{:.table}
 
 # III.Methodology
 
@@ -107,14 +106,12 @@ so we use **One-Hot Encoding** and **Ordinal Encoding** to preprocess the column
 One-Hot Encoding (for categorical variables without an obvious order) :
 
 | Gender | Employment_Status | Medication_Use | Substance_Use |
-|--------|-------------------|----------------|----------------|
-{:.table}
+|---------|--------------------|-----------------|----------------|
 
 Ordinal Encoding (for categorical variables with an obvious order) ：
 
 | Education_Level | Medication_Use | Substance_Use |
-|-----------------|----------------|----------------|
-{:.table}
+|------------------|-----------------|----------------|
 
 and here's the code of the encoding process:
 
