@@ -113,6 +113,42 @@ Ordinal Encoding (for categorical variables with an obvious order) ：
 | Education_Level | Medication_Use | Substance_Use |
 |-----------------|----------------|---------------|
 
+and here's the code of the encoding process:
+
+   ```python
+   df = pd.get_dummies(df, columns=[
+    "Gender",
+    "Employment_Status",
+    "Medication_Use",
+    "Substance_Use"
+   ], drop_first=False)
+   ```
+
+   ```python
+   education_map = {
+    "Other": 0,
+    "High School": 1,
+    "Bachelor's": 2,
+    "Master's": 3,
+    "PhD": 4
+   }
+   df["Education_Level"] = df["Education_Level"].map(education_map)
+
+   medication_map = {
+    "None": 0,
+    "Occasional": 1,
+    "Regular": 2
+   }
+   df["Medication_Use"] = df["Medication_Use"].map(medication_map)
+   
+   substance_map = {
+    "None": 0,
+    "Occasional": 1,
+    "Regular": 2
+   }
+   df["Substance_Use"] = df["Substance_Use"].map(substance_map)
+   ```
+
 # IV.Evaluation & Analysis
 ect.
 # V.Related Work 
