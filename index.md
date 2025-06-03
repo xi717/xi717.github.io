@@ -105,11 +105,11 @@ so we use **One-Hot Encoding** and **Ordinal Encoding** to preprocess the column
 
 One-Hot Encoding (for categorical variables without an obvious order) :
 
-"Gender", "Employment_Status", "Medication_Use", "Substance_Use"
+| Gender | Employment_Status | Medication_Use | Substance_Use |
 
 Ordinal Encoding (for categorical variables with an obvious order) ：
 
-"Education_Level", "Medication_Use", "Substance_Use"
+| Education_Level | Medication_Use | Substance_Use |
 
 # IV.Evaluation & Analysis
 ect.
