@@ -111,6 +111,7 @@ One-Hot Encoding (for categorical variables without an obvious order) :
 Ordinal Encoding (for categorical variables with an obvious order) ：
 
 | Education_Level | Medication_Use | Substance_Use |
+|-----------------|----------------|---------------|
 
 # IV.Evaluation & Analysis
 ect.
