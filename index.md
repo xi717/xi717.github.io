@@ -96,7 +96,21 @@ and here's the summarized information of every column:
 | Loneliness_Score | 외로움 점수 | 수치 | 1-9(점수가 높을수록 외로움이 심해진다) |
 
 # III.Methodology
-ect.
+
+## Preprocessing
+
+we have a few columns that have non-numeric values 
+
+so we use **One-Hot Encoding** and **Ordinal Encoding** to preprocess the columns below:
+
+One-Hot Encoding (for categorical variables without an obvious order) :
+
+"Gender", "Employment_Status", "Medication_Use", "Substance_Use"
+
+Ordinal Encoding (for categorical variables with an obvious order) ：
+
+"Education_Level", "Medication_Use", "Substance_Use"
+
 # IV.Evaluation & Analysis
 ect.
 # V.Related Work 
