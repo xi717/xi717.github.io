@@ -175,6 +175,14 @@ we use several models to evaluate feature importance
 
 and only keep features that are significant to our prediction
 
+**First**：
+
+use **XGBoost** to determine feature importance
+
+   ```python
+
+   ```
+
 # IV.Evaluation & Analysis
 ect.
 # V.Related Work 
