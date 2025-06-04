@@ -157,9 +157,13 @@ to make the target values more easier to predict,
 
 we'll create a new feature **Mental_Distress_Score**
 
-which discribes the overall psychological distress level 
+which discribes the overall psychological distress level by combining 
 
-by combining **Anxiety_Score**,**Depression_Score** and **Stress_Level**
+**Anxiety_Score**,**Depression_Score** and **Stress_Level**
+
+   ```python
+   df['Mental_Distress_Score'] = df['Anxiety_Score'] + df['Depression_Score'] + df['Stress_Level']
+   ```
 
 # IV.Evaluation & Analysis
 ect.
