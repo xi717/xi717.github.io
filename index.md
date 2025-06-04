@@ -97,7 +97,9 @@ and here's the summarized information of every column:
 
 # III.Methodology
 
-## Preprocessing
+## Preprocessing & Feature Engineering
+
+### Feature Encoding
 
 we have a few columns that have non-numeric values 
 
@@ -151,7 +153,7 @@ and here's the code of the encoding process:
    df["Substance_Use"] = df["Substance_Use"].map(substance_map)
    ```
 
-### Feature Engineering
+### Feature Construction
 
 to make the target values more easier to predict,
 
@@ -164,6 +166,14 @@ which discribes the overall psychological distress level by combining
    ```python
    df['Mental_Distress_Score'] = df['Anxiety_Score'] + df['Depression_Score'] + df['Stress_Level']
    ```
+
+### Feature Selection
+
+to improve model performance and interpretability,
+
+we use several models to evaluate feature importance
+
+and only keep features that are significant to our prediction
 
 # IV.Evaluation & Analysis
 ect.
