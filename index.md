@@ -152,7 +152,15 @@ and here's the code of the encoding process:
    ```
 
 ### Feature Engineering
-ect.
+
+to make the target values more easier to predict,
+
+we'll create a new feature **Mental_Distress_Score**
+
+which discribes the overall psychological distress level 
+
+by combining **Anxiety_Score**,**Depression_Score** and **Stress_Level**
+
 # IV.Evaluation & Analysis
 ect.
 # V.Related Work 
