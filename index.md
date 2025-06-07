@@ -120,12 +120,10 @@ Ordinal Encoding (for categorical variables with an obvious order) ：
 and here's the code of the encoding process:
 
    ```python
-   df = pd.get_dummies(df, columns=[
+   df = pd.get_dummies(df,columns=[
     "Gender",
     "Employment_Status",
-    "Medication_Use",
-    "Substance_Use"
-   ], drop_first=False)
+   ], drop_first=False,dtype=int)
    ```
 
    ```python
