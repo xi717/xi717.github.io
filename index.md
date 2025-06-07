@@ -173,13 +173,64 @@ we use several models to evaluate feature importance
 
 and only keep features that are significant to our prediction
 
-**First**：
+p.s. in order to continue this step
 
-use **XGBoost** to determine feature importance
+a package other than sklearn is required, 
+
+you can install it as follows:
 
    ```python
-
+   pip install xgboost shap scikit-learn matplotlib
    ```
+
+**First**：
+
+use **XGBoost** to determine feature importance 
+
+   ```python
+   import numpy as np
+   import xgboost as xgb
+   import shap
+   import matplotlib.pyplot as plt
+   from sklearn.model_selection import train_test_split
+   from sklearn.metrics import mean_squared_error, r2_score
+
+   # select the target column and other training data separately
+   X = df.drop(columns=['Mental_Distress_Score','Anxiety_Score','Depression_Score','Stress_Level'])
+   y = df['Mental_Distress_Score']
+
+   # spliting the data 
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+   # model training
+   model = xgb.XGBRegressor(
+    n_estimators=100,
+    max_depth=4,
+    learning_rate=0.1,
+    subsample=0.8,
+    random_state=42
+   )
+   model.fit(X_train, y_train)
+
+   # model evaluation
+   y_pred = model.predict(X_test)
+   mse = mean_squared_error(y_test, y_pred)
+   rmse = np.sqrt(mse)
+   r2 = r2_score(y_test, y_pred)
+   print(f"RMSE: {rmse:.2f}")
+   print(f"R² Score: {r2:.3f}")
+
+   # initializ explainer
+   explainer = shap.Explainer(model, X_train)
+
+   # getting the SHAP value
+   shap_values = explainer(X_train)
+
+   # displaying feature importance
+   shap.plots.bar(shap_values, max_display=25)
+   ```
+
+![feature importance](img/1.png)
 
 # IV.Evaluation & Analysis
 ect.
