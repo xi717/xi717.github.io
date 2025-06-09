@@ -171,8 +171,7 @@ to improve model performance and interpretability,
 
 we use several models to evaluate feature importance
 
-and only keep features that are significant to our prediction
-
+and only aim to keep features that are significant to our prediction
 p.s. in order to continue this step
 
 a package other than sklearn is required, 
