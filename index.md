@@ -232,10 +232,12 @@ use **XGBoost** to determine feature importance
 
 ![feature importance](img/1.png)
 
-so we'll drop columns that scores under 0.1
+so we'll drop 3 columns that got the lowest score
+
+since that they're from the same fearture
 
    ```python
-
+   
    ```
 
 # IV.Evaluation & Analysis
