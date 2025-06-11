@@ -172,6 +172,7 @@ to improve model performance and interpretability,
 we use several models to evaluate feature importance
 
 and only aim to keep features that are significant to our prediction
+
 p.s. in order to continue this step
 
 a package other than sklearn is required, 
@@ -231,13 +232,13 @@ use **XGBoost** to determine feature importance
 
 ![feature importance](img/1.png)
 
-so we'll drop 3 columns that got the lowest score 
+Although **Gender_Male**, **Gender_Other**, and **Gender_Non-Binary** 
 
-since that they're from the same feature
+received relatively low SHAP values, we chose not to remove them
 
-   ```python
-   
-   ```
+because they originate from the same categorical feature
+
+but some categories within this feature showed relatively high importance
 
 # IV.Evaluation & Analysis
 ect.
