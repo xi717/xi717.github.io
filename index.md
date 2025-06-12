@@ -240,6 +240,18 @@ because they originate from the same categorical feature
 
 but some categories within this feature showed relatively high importance
 
+### Standardization
+
+we're using the SVR model form sklearn
+
+because SVM is very sensitive to different feature scales
+
+so the standardization of our data is necessary
+
+   ```python
+
+   ```
+
 # IV.Evaluation & Analysis
 ect.
 # V.Related Work 
