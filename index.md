@@ -120,7 +120,6 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 
 ## 전처리 및 특징 엔지니어링 Preprocessing & Feature Engineering
 
-
 ### NaN 값 처리
 
 **Medication_Use** 와 **Substance_Use** 열에 많은 NaN 값이 있는 것을 알 수 있으므로 이를 처리해야 합니다.
@@ -138,12 +137,12 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 
 원-핫 인코딩（One-hot encoding) (명확한 순서가 없는 범주형 변수의 경우):
 | Gender | Employment_Status | Medication_Use | Substance_Use |
-|---------|--------------------|-----------------|--------------|
+|---------|--------------------|-----------------|----------------|
 | | | |
 
 순서 인코딩 (명확한 순서가 있는 범주형 변수의 경우):
 | Education_Level | Medication_Use | Substance_Use |
-|------------------|------------------|--------------------|
+|------------------|-----------------|----------------|
 | | | |
 
 and here's the code of the encoding process:
