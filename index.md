@@ -342,6 +342,7 @@ SVM은 고차원 데이터 처리에 효과적이며,
    print("✅ Best Parameters:", grid_search.best_params_)
    print(f"📉 RMSE: {rmse:.3f}")
    print(f"📈 R² Score: {r2:.3f}")
+   ```
 
    ```python
    ✅ Best Parameters: {'C': 0.1, 'gamma': 0.001, 'kernel': 'rbf'}
