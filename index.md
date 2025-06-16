@@ -16,11 +16,11 @@ toc_sticky: true
        
  * 증자서 인공지능학과 zzxzzx1818@163.com
        
-# I.제안 Proposal
+# I.제안 
 
 우리는 옵션 1을 선택했습니다
 
-## 동기 Motivation
+## 동기 
 
 최근 몇 년 사이, 불안 장애와 우울증으로 인한 자살 사례가 뉴스 보도를 통해 빈번하게 접할 수 있을 만큼 사회적으로 큰 문제가 되고 있습니다. 
     
@@ -36,7 +36,7 @@ toc_sticky: true
 
 이러한 시도는 단순한 기술적 구현을 넘어, 인간 중심의 기술 활용이라는 측면에서 매우 중요한 의의를 지니며, 미래 정신건강 관리의 새로운 패러다임을 제시하는 데 기여할 것입니다.
 
-## 우리의 기대 Our expectations
+## 우리의 기대 
 
 본 연구를 통해 우리는 단순히 불안과 우울증의 수준을 예측하는 것을 넘어, 정신건강 문제에 대한 보다 깊이 있는 이해를 얻고자 합니다. 첫째, 
 
@@ -44,7 +44,7 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 
 또한, AI 모델을 통해 실시간으로 불안과 우울증 증세를 추적하고 분석함으로써, 정신건강 문제가 발생할 위험이 있는 사람들을 조기에 발견하고 대응할 수 있는 시스템을 마련하는 것이 우리의 목표입니다.
 
-# II.데이터셋 Datasets
+# II.데이터셋 
 
 이것은 우리 프로젝트에서 사용한 데이터셋 링크입니다:
 [https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors](https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors)
@@ -116,9 +116,9 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 | Life_Satisfaction_Score | 삶의 만족도 | 수치 | 1-9(점수가 높을수록 만족도이 높아진다) |
 | Loneliness_Score | 외로움 점수 | 수치 | 1-9(점수가 높을수록 외로움이 심해진다) |
 
-# III. 방법론 Methodology
+# III. 방법론 
 
-## 전처리 및 특징 엔지니어링 Preprocessing & Feature Engineering
+## 전처리 및 특징 엔지니어링 
 
 ### NaN 값 처리
 
@@ -129,7 +129,7 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
    df['Substance_Use'] = df['Substance_Use'].fillna('None')
    ```
 
-### 특징 인코딩 Feature Encoding
+### 특징 인코딩 
 
 비수치형 값을 가진 몇몇 열이 있습니다
 
@@ -182,7 +182,7 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
    df["Substance_Use"] = df["Substance_Use"].map(substance_map)
    ```
 
-### 특징 생성 Feature Construction
+### 특징 생성 
 
 예측 대상 값을 더 쉽게 만들기 위해,
 
@@ -196,8 +196,7 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
    df['Mental_Distress_Score'] = df['Anxiety_Score'] + df['Depression_Score'] + df['Stress_Level']
    ```
 
-### 특징 선택 Feature Selection
-
+### 특징 선택 
 모델 성능과 해석 가능성을 향상시키기 위해
 
 여러 모델을 사용하여 특징 중요도를 평가하고
@@ -270,7 +269,7 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 
 하지만 이 특징 내 일부 범주는 비교적 높은 중요도를 보였습니다
 
-### 표준화 Standardization
+### 표준화 
 
 우리는 학습의 SVR 모델을 사용하고 있습니다
 
