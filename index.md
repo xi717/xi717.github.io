@@ -156,7 +156,7 @@ and here's the code of the encoding process:
    substance_map = {
     "None": 0,
     "Occasional": 1,
-    "Regular": 2
+    "Frequent": 2
    }
    df["Substance_Use"] = df["Substance_Use"].map(substance_map)
    ```
