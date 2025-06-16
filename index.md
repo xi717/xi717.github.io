@@ -17,28 +17,28 @@ toc_sticky: true
  * 증자서 인공지능학과 zzxzzx1818@163.com
        
 # I.Proposal
-etc.
+etc.제안
 ## Motivation
-ect.
+ect.동기
 ## Our expectations
-ect.
+ect.우리의 기대
 # II.Datasets
-
+데이터셋
 this is the link of the dataset used in our project:
-
+이것은 우리 프로젝트에서 사용한 데이터셋 링크입니다:
 [https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors](https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors)
 
 first, let's read the csv file and check our dataset using pandas:
-
-   ```python
+먼저, CSV 파일을 읽고 pandas를 사용하여 데이터셋을 확인해 봅시다:
+```python
    import pandas as pd
    df = pd.read_csv("anxiety_depression_data.csv")
    print(df.info())
    ```
 
 we should get a terminal output like below:
-
-   ```python
+터미널에서 아래와 같은 출력 결과를 얻을 수 있습니다:
+```python
    <class 'pandas.core.frame.DataFrame'>
    RangeIndex: 1200 entries, 0 to 1199
    Data columns (total 21 columns):
@@ -70,7 +70,7 @@ we should get a terminal output like below:
    ```
 
 and here's the summarized information of every column: 
-
+각 열의 요약된 정보는 다음과 같습니다:
 | 변수명 | 설명 | 유형 | 범위/예시 |
 |--------|------|------|----------|
 | Age | 응답자 연령 | 수치 | 18-74세 |
@@ -96,30 +96,30 @@ and here's the summarized information of every column:
 | Loneliness_Score | 외로움 점수 | 수치 | 1-9(점수가 높을수록 외로움이 심해진다) |
 
 # III.Methodology
-
+방법론
 ## Preprocessing & Feature Engineering
-
+전처리 및 특징 엔지니어링
 ### Feature Encoding
-
+특징 인코딩
 we have a few columns that have non-numeric values 
-
+비수치형 값을 가진 몇몇 열이 있습니다
 so we use **One-Hot Encoding** and **Ordinal Encoding** to preprocess the columns below:
-
+그래서 아래 열들을 전처리하기 위해 원-핫 인코딩(One-Hot Encoding) 과 순서 인코딩(Ordinal Encoding) 을 사용합니다:
 One-Hot Encoding (for categorical variables without an obvious order) :
-
+원-핫 인코딩（One-hot encoding) (명확한 순서가 없는 범주형 변수의 경우):
 | Gender | Employment_Status | Medication_Use | Substance_Use |
-|---------|--------------------|-----------------|----------------|
+| 성별    | 고용 상태            | 약물 사용 여부    | 약물 사용 여부    |
 | | | |
 
 Ordinal Encoding (for categorical variables with an obvious order) ：
-
+순서 인코딩 (명확한 순서가 있는 범주형 변수의 경우):
 | Education_Level | Medication_Use | Substance_Use |
-|------------------|-----------------|----------------|
+| 학력 수준          |약물 사용 여부     | 약물 사용 여부    |
 | | | |
 
 and here's the code of the encoding process:
-
-   ```python
+다음은 인코딩 과정을 위한 코드입니다:
+```python
    df = pd.get_dummies(df,columns=[
     "Gender",
     "Employment_Status",
@@ -152,42 +152,42 @@ and here's the code of the encoding process:
    ```
 
 ### Feature Construction
-
+특징 생성
 to make the target values more easier to predict,
-
+예측 대상 값을 더 쉽게 만들기 위해,
 we'll create a new feature **Mental_Distress_Score**
-
+우리는 Mental_Distress_Score 라는 새로운 특징을 생성할 것입니다.
 which discribes the overall psychological distress level by combining 
-
+이를 통해 전반적인 심리적 고통 수준을 설명합니다.
 **Anxiety_Score**,**Depression_Score** and **Stress_Level**
-
-   ```python
+불안 점수、우울 점수、스트레스 수준
+```python
    df['Mental_Distress_Score'] = df['Anxiety_Score'] + df['Depression_Score'] + df['Stress_Level']
    ```
 
 ### Feature Selection
-
+특징 선택
 to improve model performance and interpretability,
-
+모델 성능과 해석 가능성을 향상시키기 위해
 we use several models to evaluate feature importance
-
+여러 모델을 사용하여 특징 중요도를 평가하고
 and only aim to keep features that are significant to our prediction
-
-p.s. in order to continue this step
-
+예측에 중요한 특징만을 선별하여 유지합니다
+、p.s. in order to continue this step
+추신: 이 단계를 계속 진행하기 위해서
 a package other than sklearn is required, 
-
+학습 이외의 패키지가 필요합니다,
 you can install it as follows:
-
-   ```python
+다음과 같이 설치할 수 있습니다:
+```python
    pip install xgboost shap scikit-learn matplotlib
    ```
 
 **First**：
-
+먼저
 use **XGBoost** to determine feature importance 
-
-   ```python
+특징 중요도를 결정하기 위해 XGBoost를 사용합니다
+```python
    import numpy as np
    import xgboost as xgb
    import shap
@@ -233,28 +233,28 @@ use **XGBoost** to determine feature importance
 ![feature importance](img/1.png)
 
 Although **Gender_Male**, **Gender_Other**, and **Gender_Non-Binary** 
-
+비록 성별_남성, 성별_기타,성별_기타,그리고 성별_논바이너리
 received relatively low SHAP values, we chose not to remove them
-
+비교적 낮은 SHAP 값을 받았지만, 우리는 이를 제거하지 않기로 결정했습니다
 because they originate from the same categorical feature
-
+왜냐하면 이들은 동일한 범주형 특징에서 비롯되었기 때문입니다
 but some categories within this feature showed relatively high importance
-
+하지만 이 특징 내 일부 범주는 비교적 높은 중요도를 보였습니다
 ### Standardization
-
+표준화
 we're using the SVR model form sklearn
-
+우리는 학습의 SVR 모델을 사용하고 있습니다
 because SVM is very sensitive to different feature scales
-
+SVM은 서로 다른 특징 스케일에 매우 민감하기 때문입니다
 so the standardization of our data is necessary
-
-   ```python
+따라서 데이터의 표준화가 필요합니다
+```python
 
    ```
 
 # IV.Evaluation & Analysis
-ect.
+ect.평가 및 분석
 # V.Related Work 
-ect.
+ect.관련 연구
 # VI.Conclusion: Discussion
-ect.
+ect.결론: 토론
