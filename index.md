@@ -105,8 +105,8 @@ and here's the summarized information of every column:
 Medication_Use와 Substance_Use 열에 많은 NaN 값이 있는 것을 알 수 있으므로 이를 처리해야 합니다.
 
    ```python
-   df['Medication_Use'] = df['Medication_Use'].fillna('Missing')
-   df['Substance_Use'] = df['Substance_Use'].fillna('Missing')
+   df['Medication_Use'] = df['Medication_Use'].fillna('None')
+   df['Substance_Use'] = df['Substance_Use'].fillna('None')
    ```
 
 ### Feature Encoding
@@ -147,18 +147,16 @@ and here's the code of the encoding process:
    df["Education_Level"] = df["Education_Level"].map(education_map)
 
    medication_map = {
-    "Missing": 0,
-    "None": 1,
-    "Occasional": 2,
-    "Regular": 3
+    "None": 0,
+    "Occasional": 1,
+    "Regular": 2
    }
    df["Medication_Use"] = df["Medication_Use"].map(medication_map)
    
    substance_map = {
-    "Missing": 0,
-    "None": 1,
-    "Occasional": 2,
-    "Regular": 3
+    "None": 0,
+    "Occasional": 1,
+    "Regular": 2
    }
    df["Substance_Use"] = df["Substance_Use"].map(substance_map)
    ```
