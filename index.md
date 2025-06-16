@@ -16,28 +16,27 @@ toc_sticky: true
        
  * 증자서 인공지능학과 zzxzzx1818@163.com
        
-# I.Proposal
-etc.제안
-## Motivation
-ect.동기
-## Our expectations
-ect.우리의 기대
-# II.Datasets
-데이터셋
-this is the link of the dataset used in our project:
+# I.제안 Proposal
+
+## 동기 Motivation
+
+## 우리의 기대 Our expectations
+
+# II.데이터셋 Datasets
+
 이것은 우리 프로젝트에서 사용한 데이터셋 링크입니다:
 [https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors](https://www.kaggle.com/datasets/ak0212/anxiety-and-depression-mental-health-factors)
 
-first, let's read the csv file and check our dataset using pandas:
 먼저, CSV 파일을 읽고 pandas를 사용하여 데이터셋을 확인해 봅시다:
-```python
+
+   ```python
    import pandas as pd
    df = pd.read_csv("anxiety_depression_data.csv")
    print(df.info())
    ```
 
-we should get a terminal output like below:
 터미널에서 아래와 같은 출력 결과를 얻을 수 있습니다:
+
 ```python
    <class 'pandas.core.frame.DataFrame'>
    RangeIndex: 1200 entries, 0 to 1199
@@ -69,8 +68,8 @@ we should get a terminal output like below:
    memory usage: 197.0+ KB
    ```
 
-and here's the summarized information of every column: 
 각 열의 요약된 정보는 다음과 같습니다:
+
 | 변수명 | 설명 | 유형 | 범위/예시 |
 |--------|------|------|----------|
 | Age | 응답자 연령 | 수치 | 18-74세 |
@@ -95,36 +94,34 @@ and here's the summarized information of every column:
 | Life_Satisfaction_Score | 삶의 만족도 | 수치 | 1-9(점수가 높을수록 만족도이 높아진다) |
 | Loneliness_Score | 외로움 점수 | 수치 | 1-9(점수가 높을수록 외로움이 심해진다) |
 
-# III.Methodology
-방법론
-## Preprocessing & Feature Engineering
-전처리 및 특징 엔지니어링
+# III. 방법론 Methodology
+
+## 전처리 및 특징 엔지니어링 Preprocessing & Feature Engineering
+
 
 ### NaN 값 처리
 
-Medication_Use와 Substance_Use 열에 많은 NaN 값이 있는 것을 알 수 있으므로 이를 처리해야 합니다.
+**Medication_Use** 와 **Substance_Use** 열에 많은 NaN 값이 있는 것을 알 수 있으므로 이를 처리해야 합니다.
 
    ```python
    df['Medication_Use'] = df['Medication_Use'].fillna('None')
    df['Substance_Use'] = df['Substance_Use'].fillna('None')
    ```
 
-### Feature Encoding
-특징 인코딩
-we have a few columns that have non-numeric values 
+### 특징 인코딩 Feature Encoding
+
 비수치형 값을 가진 몇몇 열이 있습니다
-so we use **One-Hot Encoding** and **Ordinal Encoding** to preprocess the columns below:
+
 그래서 아래 열들을 전처리하기 위해 원-핫 인코딩(One-Hot Encoding) 과 순서 인코딩(Ordinal Encoding) 을 사용합니다:
-One-Hot Encoding (for categorical variables without an obvious order) :
+
 원-핫 인코딩（One-hot encoding) (명확한 순서가 없는 범주형 변수의 경우):
 | Gender | Employment_Status | Medication_Use | Substance_Use |
-| 성별    | 고용 상태            | 약물 사용 여부    | 약물 사용 여부    |
+|---------|--------------------|-----------------|--------------|
 | | | |
 
-Ordinal Encoding (for categorical variables with an obvious order) ：
 순서 인코딩 (명확한 순서가 있는 범주형 변수의 경우):
 | Education_Level | Medication_Use | Substance_Use |
-| 학력 수준          |약물 사용 여부     | 약물 사용 여부    |
+|------------------|------------------|--------------------|
 | | | |
 
 and here's the code of the encoding process:
@@ -161,42 +158,41 @@ and here's the code of the encoding process:
    df["Substance_Use"] = df["Substance_Use"].map(substance_map)
    ```
 
-### Feature Construction
-특징 생성
-to make the target values more easier to predict,
+### 특징 생성 Feature Construction
+
 예측 대상 값을 더 쉽게 만들기 위해,
-we'll create a new feature **Mental_Distress_Score**
-우리는 Mental_Distress_Score 라는 새로운 특징을 생성할 것입니다.
-which discribes the overall psychological distress level by combining 
+
+우리는 **Mental_Distress_Score** 라는 새로운 특징을 생성할 것입니다.
+
 이를 통해 전반적인 심리적 고통 수준을 설명합니다.
-**Anxiety_Score**,**Depression_Score** and **Stress_Level**
-불안 점수、우울 점수、스트레스 수준
+
+**Anxiety_Score**,**Depression_Score** , **Stress_Level**
+
 ```python
    df['Mental_Distress_Score'] = df['Anxiety_Score'] + df['Depression_Score'] + df['Stress_Level']
    ```
 
-### Feature Selection
-특징 선택
-to improve model performance and interpretability,
+### 특징 선택 Feature Selection
+
 모델 성능과 해석 가능성을 향상시키기 위해
-we use several models to evaluate feature importance
+
 여러 모델을 사용하여 특징 중요도를 평가하고
-and only aim to keep features that are significant to our prediction
+
 예측에 중요한 특징만을 선별하여 유지합니다
-、p.s. in order to continue this step
+
 추신: 이 단계를 계속 진행하기 위해서
-a package other than sklearn is required, 
+
 학습 이외의 패키지가 필요합니다,
-you can install it as follows:
+
 다음과 같이 설치할 수 있습니다:
-```python
+   ```python
    pip install xgboost shap scikit-learn matplotlib
    ```
 
-**First**：
-먼저
-use **XGBoost** to determine feature importance 
-특징 중요도를 결정하기 위해 XGBoost를 사용합니다
+**먼저**：
+
+특징 중요도를 결정하기 위해 **XGBoost**를 사용합니다
+
 ```python
    import numpy as np
    import xgboost as xgb
@@ -242,22 +238,22 @@ use **XGBoost** to determine feature importance
 
 ![feature importance](img/1.png)
 
-Although **Gender_Male**, **Gender_Other**, and **Gender_Non-Binary** 
-비록 성별_남성, 성별_기타,성별_기타,그리고 성별_논바이너리
-received relatively low SHAP values, we chose not to remove them
+비록 **Gender_Male**, **Gender_Other**,그리고 **Gender_Non-Binary** 
+
 비교적 낮은 SHAP 값을 받았지만, 우리는 이를 제거하지 않기로 결정했습니다
-because they originate from the same categorical feature
+
 왜냐하면 이들은 동일한 범주형 특징에서 비롯되었기 때문입니다
-but some categories within this feature showed relatively high importance
+
 하지만 이 특징 내 일부 범주는 비교적 높은 중요도를 보였습니다
-### Standardization
-표준화
-we're using the SVR model form sklearn
+
+### 표준화 Standardization
+
 우리는 학습의 SVR 모델을 사용하고 있습니다
-because SVM is very sensitive to different feature scales
+
 SVM은 서로 다른 특징 스케일에 매우 민감하기 때문입니다
-so the standardization of our data is necessary
+
 따라서 데이터의 표준화가 필요합니다
+
    ```python
    from sklearn.preprocessing import StandardScaler
 
@@ -282,10 +278,57 @@ so the standardization of our data is necessary
    df_scaled = df.copy()
    df_scaled[standardize_cols] = scaler.fit_transform(df[standardize_cols])
    ```
+### 모델 학습
 
-# IV.Evaluation & Analysis
-ect.평가 및 분석
-# V.Related Work 
-ect.관련 연구
-# VI.Conclusion: Discussion
-ect.결론: 토론
+SVM은 고차원 데이터 처리에 효과적이며,
+
+특히 특징 개수가 샘플 개수보다 훨씬 많을 때에도 안정적으로 작동합니다.
+
+데이터가 2,000개의 행만 있으므로 SVM을 사용합니다.
+
+   ```python
+   from sklearn.model_selection import train_test_split, GridSearchCV
+   from sklearn.svm import SVR
+   from sklearn.metrics import mean_squared_error, r2_score
+   import numpy as np
+
+   # 1. 특징과 대상 분리(Mental_Distress_Score를 회귀 대상으로 사용)
+   X = df_scaled.drop(columns=['Mental_Distress_Score', 'Anxiety_Score', 'Depression_Score', 'Stress_Level'])
+   y = df_scaled['Mental_Distress_Score']
+
+   # 2. 데이터셋 분할
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+   # 3. 하이퍼파라미터 검색: GridSearchCV를 사용하여 최적의 C 및 감마를 선택합니다.
+   param_grid = {
+       'C': [0.1, 1, 10],
+       'gamma': ['scale', 'auto', 0.01, 0.001],
+       'kernel': ['rbf']
+   }
+   svr = SVR()
+   grid_search = GridSearchCV(svr, param_grid, cv=5, scoring='neg_mean_squared_error', verbose=0)
+   grid_search.fit(X_train, y_train)
+
+   # 4. 최적의 모델을 사용하여 예측
+   best_model = grid_search.best_estimator_
+   y_pred = best_model.predict(X_test)
+
+   # 5. 모델 평가
+   mse = mean_squared_error(y_test, y_pred)
+   rmse = np.sqrt(mse)
+   r2 = r2_score(y_test, y_pred)
+
+   print("✅ Best Parameters:", grid_search.best_params_)
+   print(f"📉 RMSE: {rmse:.3f}")
+   print(f"📈 R² Score: {r2:.3f}")
+
+   ```python
+   ✅ Best Parameters: {'C': 0.1, 'gamma': 0.001, 'kernel': 'rbf'}
+   📉 RMSE: 8.080
+   📈 R² Score: -0.000
+   ```
+# V.관련 연구 Related Work 
+
+다음은 sklearn의 SVM 문서입니다.
+
+[https://scikit-learn.org/stable/modules/svm.html](https://scikit-learn.org/stable/modules/svm.html)
