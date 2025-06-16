@@ -201,14 +201,14 @@ and here's the code of the encoding process:
    from sklearn.model_selection import train_test_split
    from sklearn.metrics import mean_squared_error, r2_score
 
-   # select the target column and other training data separately
+   # 대상 열과 다른 학습 데이터를 별도로 선택합니다.
    X = df.drop(columns=['Mental_Distress_Score','Anxiety_Score','Depression_Score','Stress_Level'])
    y = df['Mental_Distress_Score']
 
-   # spliting the data 
+   # 데이터 분할
    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-   # model training
+   # 모델 학습
    model = xgb.XGBRegressor(
     n_estimators=100,
     max_depth=4,
@@ -218,7 +218,7 @@ and here's the code of the encoding process:
    )
    model.fit(X_train, y_train)
 
-   # model evaluation
+   # 모델 평가
    y_pred = model.predict(X_test)
    mse = mean_squared_error(y_test, y_pred)
    rmse = np.sqrt(mse)
@@ -226,13 +226,13 @@ and here's the code of the encoding process:
    print(f"RMSE: {rmse:.2f}")
    print(f"R² Score: {r2:.3f}")
 
-   # initializ explainer
+   # 설명자 초기화
    explainer = shap.Explainer(model, X_train)
 
-   # getting the SHAP value
+   # SHAP 값 얻기
    shap_values = explainer(X_train)
 
-   # displaying feature importance
+   # 기능 중요도 표시
    shap.plots.bar(shap_values, max_display=25)
    ```
 
