@@ -99,6 +99,16 @@ and here's the summarized information of every column:
 방법론
 ## Preprocessing & Feature Engineering
 전처리 및 특징 엔지니어링
+
+### NaN 값 처리
+
+Medication_Use와 Substance_Use 열에 많은 NaN 값이 있는 것을 알 수 있으므로 이를 처리해야 합니다.
+
+   ```python
+   df['Medication_Use'] = df['Medication_Use'].fillna('Missing')
+   df['Substance_Use'] = df['Substance_Use'].fillna('Missing')
+   ```
+
 ### Feature Encoding
 특징 인코딩
 we have a few columns that have non-numeric values 
@@ -137,16 +147,18 @@ and here's the code of the encoding process:
    df["Education_Level"] = df["Education_Level"].map(education_map)
 
    medication_map = {
-    "None": 0,
-    "Occasional": 1,
-    "Regular": 2
+    "Missing": 0,
+    "None": 1,
+    "Occasional": 2,
+    "Regular": 3
    }
    df["Medication_Use"] = df["Medication_Use"].map(medication_map)
    
    substance_map = {
-    "None": 0,
-    "Occasional": 1,
-    "Regular": 2
+    "Missing": 0,
+    "None": 1,
+    "Occasional": 2,
+    "Regular": 3
    }
    df["Substance_Use"] = df["Substance_Use"].map(substance_map)
    ```
@@ -248,8 +260,29 @@ because SVM is very sensitive to different feature scales
 SVM은 서로 다른 특징 스케일에 매우 민감하기 때문입니다
 so the standardization of our data is necessary
 따라서 데이터의 표준화가 필요합니다
-```python
+   ```python
+   from sklearn.preprocessing import StandardScaler
 
+   # 대상 열과 정렬된 코드화된 열을 명확하게 정의합니다(표준화 없이)
+   target_cols = ['Mental_Distress_Score', 'Anxiety_Score', 'Depression_Score', 'Stress_Level']
+   encoded_ordered_cols = ['Education_Level', 'Medication_Use', 'Substance_Use']
+
+   # 모든 숫자 열
+   numeric_cols = df.select_dtypes(include='number').columns.tolist()
+
+   # One-Hot 인코딩된 열 식별: 값은 0 또는 1이고 열 이름은 get_dummies에서 가져옵니다.
+   possible_one_hot_cols = [col for col in numeric_cols if df[col].nunique() <= 2 and set(df[col].unique()) <= {0, 1}]
+
+   # 표준화할 열 = 대상 제거, 정렬된 인코딩, 원핫 인코딩 열
+   standardize_cols = [
+       col for col in numeric_cols
+       if col not in target_cols + encoded_ordered_cols + possible_one_hot_cols
+   ]
+
+   # 표준화 수행
+   scaler = StandardScaler()
+   df_scaled = df.copy()
+   df_scaled[standardize_cols] = scaler.fit_transform(df[standardize_cols])
    ```
 
 # IV.Evaluation & Analysis
