@@ -135,14 +135,14 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 
 그래서 아래 열들을 전처리하기 위해 원-핫 인코딩(One-Hot Encoding) 과 순서 인코딩(Ordinal Encoding) 을 사용합니다:
 
-원-핫 인코딩（One-hot encoding) (명확한 순서가 없는 범주형 변수의 경우):
+원-핫 인코딩 (One-hot encoding) (명확한 순서가 없는 범주형 변수의 경우):
 
  * **Gender**
  * **Employment_Status** 
  * **Medication_Use** 
  * **Substance_Use** 
 
-순서 인코딩 (명확한 순서가 있는 범주형 변수의 경우):
+순서 인코딩 (Ordinal Encoding) (명확한 순서가 있는 범주형 변수의 경우):
 
  * **Education_Level**
  * **Medication_Use**
