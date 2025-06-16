@@ -145,9 +145,9 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
 |------------------|-----------------|----------------|
 | | | |
 
-and here's the code of the encoding process:
 다음은 인코딩 과정을 위한 코드입니다:
-```python
+
+   ```python
    df = pd.get_dummies(df,columns=[
     "Gender",
     "Employment_Status",
