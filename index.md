@@ -352,7 +352,7 @@ SVM은 고차원 데이터 처리에 효과적이며,
    📈 R² Score: -0.000
    ```
 
-# IV. 관련 연구 Related Work 
+# IV. 관련 연구 
 
 다음은 sklearn의 SVM 문서입니다.
 
