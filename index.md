@@ -250,7 +250,7 @@ AI 기술을 활용한 예측 모델이 실제로 정신건강 관리에 어떻�
    print(f"R² Score: {r2:.3f}")
 
    # 설명자 초기화
-   explainer = shap.Explainer(model, X_train)
+   explainer = shap.Explainer(model.predict, X_train)
 
    # SHAP 값 얻기
    shap_values = explainer(X_train)
